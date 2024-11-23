@@ -19,3 +19,22 @@ def add_author(request):
     return render(request, 'recipe_app/register_authors.html', context)
 
 
+def add_recipe(request):
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form_data = form.cleaned_data
+            Recipe.objects.create(
+                title=form_data['title'],
+                description=form_data['description'],
+                ingredients=form_data['ingredients'],
+                steps_cooking=form_data['steps_cooking'],
+                time_cooking = form_data['time_cooking'],
+                image_dish=form_data['image'],
+                author=Author.objects.get(id=form_data['author'])
+            )
+    else:
+        form = RecipeForm()
+    recipes = Recipe.objects.all()
+    context = {'recipes': recipes, 'form': form}
+    return render(request, 'recipe_app/create_recipes.html', context)

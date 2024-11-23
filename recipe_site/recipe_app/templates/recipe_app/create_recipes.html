@@ -1,0 +1,28 @@
+{% extends 'recipe_app/base.html' %}
+
+{% block title %}
+    {{ title }}
+{%endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Создание рецепта:</h1>
+        <ul>
+        {% for el in recipes  %}
+            <li>{{ el.title }}</li>
+            <li>{{ el.description }}</li>
+            <li>{{ el.ingredients }}</li>
+            <li>{{ el.steps_cooking }}</li>
+            <li>{{ el.time_cooking }}</li>
+            <li>{{ el.image_dish }}</li>
+            <li>{{ el.author }}</li>
+        {% endfor %}
+        </ul>
+        <hr>
+        <form action="" method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Добавить рецепт">
+        </form>
+    </div>
+{% endblock %}
