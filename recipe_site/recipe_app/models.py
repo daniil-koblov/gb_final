@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=50)
     email = models.EmailField()
 
     def full_name(self):
@@ -17,13 +17,16 @@ class Author(models.Model):
 
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=60)
     description = models.TextField()
-    ingredients = models.CharField(max_length=100)
+    ingredients = models.CharField(max_length=30)
     steps_cooking = models.TextField()
     time_cooking = models.TextField()
     image_dish = models.ImageField(upload_to='recipes/')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Рецепт: {self.title},  автор: {self.author.name}."
 
 
 class Category(models.Model):
