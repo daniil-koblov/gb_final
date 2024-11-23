@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+footer {
+color: inherit;
+text-align: center;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.navbar a:hover {
+    color: #ddd;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.greeting {
+    color: inherit;
+    padding: 10px;
+    color: black;
+    font-size: 18px;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.recipe {
+    width: 30%;
+    border: 5px solid #6666FF;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px 10px rgba(204, 102, 102, 0.5);
+    border-radius: 10px;
+}
+
+.recipe a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.recipe a:hover {
+    text-decoration: underline;
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.recipe_full {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    word-wrap: break-word;
+}
+
+.recipe_full h1 {
+    margin-top: 0;
+}
+
+.recipe_full strong {
+    display: block;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Create/update */
+.fieldWrapper {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.fieldWrapper label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.fieldWrapper input, .fieldWrapper textarea {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.fieldWrapper button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+.fieldWrapper button:hover {
+    background-color: #45a049;
+}
+
+.centered-form {
+    padding-top: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.centered-form form {
+    width: 50%;
+}
+
+table {
+    border-spacing: 20px;
+}
