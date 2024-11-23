@@ -13,6 +13,7 @@ class AuthorForm(forms.Form):
         label='Email',
         widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Введите email'})
     )
+    password = forms.CharField()
 
 
 class RecipeForm(forms.Form):
@@ -23,20 +24,23 @@ class RecipeForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите название рецепта'})
     )
     description = forms.CharField(
+        max_length=200,
         label='Описание рецепта',
         widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите описание рецепта'})
     )
     ingredients = forms.CharField(
         min_length=2,
-        max_length=30,
+        max_length=200,
         label='Ингредиенты',
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите ингредиенты'})
     )
     steps_cooking = forms.CharField(
+        max_length=200,
         label='Шаги приготовления',
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Запишите шаги приготовления'})
     )
     time_cooking = forms.CharField(
+        max_length=30,
         label='Время приготовления',
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Опишите время приготовления'})
     )

@@ -4,6 +4,7 @@ from django.db import models
 class Author(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
+    password = models.CharField(max_length=20)
 
     def full_name(self):
         return f'{self.name} {self.email}'
@@ -18,10 +19,10 @@ class Author(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=60)
-    description = models.TextField()
-    ingredients = models.CharField(max_length=30)
-    steps_cooking = models.TextField()
-    time_cooking = models.TextField()
+    description = models.CharField(max_length=200)
+    ingredients = models.CharField(max_length=100)
+    steps_cooking = models.CharField(max_length=100)
+    time_cooking = models.CharField(max_length=30)
     image_dish = models.ImageField(upload_to='recipes/')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
 

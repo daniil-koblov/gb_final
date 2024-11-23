@@ -1,7 +1,10 @@
+import random
+
 from django.shortcuts import render, redirect
 from .models import Author, Recipe, Category
 from .forms import AuthorForm, RecipeForm
-
+FRIST_ID = 1
+SIX_ID = 6
 
 def add_author(request):
     if request.method == 'POST':
@@ -38,3 +41,19 @@ def add_recipe(request):
     recipes = Recipe.objects.all()
     context = {'recipes': recipes, 'form': form}
     return render(request, 'recipe_app/create_recipes.html', context)
+
+
+def get_five_recipes(request, id_recipe: int):
+    for count in range(FRIST_ID, SIX_ID):
+        id_recipe = random.randint(1, 10)
+        recipe = get_object_or_404(Recipe, id=id_recipe)
+        recipe.__str__()
+        context = {
+            'title': recipe.title,
+            'author': recipe.author,
+            'description': recipe.description,
+            'time_cooking': recipe.time_cooking,
+        }
+        count += 1
+        return render(request, 'recipe_app/get_five_recipe.html', context)
+

@@ -7,11 +7,6 @@
 {% block content %}
     <div class="container">
         <h1>Регистрация автора:</h1>
-        <ul>
-        {% for el in authors  %}
-            <li>{{ el.name }} {{ el.email }}</li>
-        {% endfor %}
-        </ul>
         <hr>
         <form action="" method='post'>
             {% csrf_token %}
