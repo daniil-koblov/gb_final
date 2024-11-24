@@ -5,6 +5,16 @@
 
 {% block content %}
     <div class="container">
-        {{ recipe }}
+        {% for el in recipes %}
+            <h1>{{ el.title }}</h1>
+            <p>{{ el.description }}</p>
+            <p>Время приготовления: {{ el.time_cooking }}</p>
+        {% endfor %}
+        <form method="get" action="{% url 'users_app:authorization' %}">
+        <button type="submit">Войти</button>
+        </form>
+        <form method="get" action="{% url 'users_app:register' %}">
+            <button type="submit"> Регистрация</button>
+        </form>
     </div>
 {% endblock %}

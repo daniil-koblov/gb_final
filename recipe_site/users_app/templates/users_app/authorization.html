@@ -16,5 +16,8 @@
             Еще не зарегистрированы?
         <button type="submit"> Регистрация</button>
             </form>
+        <form method="get" action="{% url 'users_app:logout' %}">
+            <button type="submit"> Выход</button>
+            </form>
     </div>
 {% endblock %}

@@ -2,11 +2,12 @@ import random
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe, Category
 from .forms import RecipeForm
+from django.http import HttpResponse
 FRIST_ID = 1
 SIX_ID = 3
 
 
-def add_recipe(request):
+def create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
@@ -29,18 +30,36 @@ def add_recipe(request):
 
 
 def get_five_recipes(request):
-    recipe = ''
-    for count in range(FRIST_ID, SIX_ID):
-        id_recipe = random.randint(1, 3)
-        recipe = get_object_or_404(Recipe, id=id_recipe)
-        recipe.__str__()
-        count += 1
+    recipes = []
+    added_recipe_ids = set()
+    count = 0
+    while count < 5:
+        id_recipe = random.randint(1, 5)
+        if id_recipe not in added_recipe_ids:
+            recipe = get_object_or_404(Recipe, id=id_recipe)
+            recipes.append({
+                'title': recipe.title,
+                'description': recipe.description,
+                'time_cooking': recipe.time_cooking,
+            })
+            added_recipe_ids.add(id_recipe)
+            count += 1
+
     context = {
-        'recipe': recipe,
-        'title': recipe.title,
-        # 'author': recipe.author,
-        'description': recipe.description,
-        'time_cooking': recipe.time_cooking,
+        'recipes': recipes,
     }
     return render(request, 'recipe_app/index.html', context)
+
+
+def get_recipe(request, id_recipe):
+    recipe = get_object_or_404(Recipe, id=id_recipe)
+    context = {
+        'title': recipe.title,
+        'description': recipe.description,
+        'ingredients': recipe.ingredients,
+        'steps_cooking': recipe.steps_cooking,
+        'time_cooking': recipe.time_cooking,
+        'image_dish': recipe.image_dish,
+    }
+    return render(request, 'recipe_app/get_recipe.html', context)
 

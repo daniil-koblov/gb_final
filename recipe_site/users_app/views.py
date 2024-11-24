@@ -30,7 +30,7 @@ def authorization(request):
     return render(request, 'users_app/authorization.html', {'form': form})
 
 
-def logout(request):
+def logout_user(request):
     logout(request)
     messages.success(request, "Выход из системы выполнен успешно!")
     return redirect('index')
