@@ -21,7 +21,7 @@
     </div>
     <div>
         {% if user.is_authenticated %}
-            <p>Добро пожаловать, {{ user.username }}!</p>
+            <p>Вы вошли под аккаунтом {{ user.username }}!</p>
             <form method="get" action="{% url 'users_app:logout' %}">
                 <button type="submit" class="btn btn-danger">Выйти из аккаунта</button>
             </form>
@@ -30,7 +30,7 @@
                 <button type="submit" class="btn btn-primary">Войти</button>
             </form>
             <form method="get" action="{% url 'users_app:register' %}">
-                <button type="submit" class="btn btn-success">Регистрация</button>
+                <button type="submit" class="btn btn-primary">Регистрация</button>
             </form>
         {% endif %}
     </div>
