@@ -1,0 +1,15 @@
+{% extends 'recipe_app/base.html' %}
+{% block title %}
+    {{ title }}
+{%endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Рецепт: {{ title }}</h1>
+        <p>Описание: {{ description }}</p>
+        <p>Ингредиенты: {{ ingredients }}</p>
+        <p>Время приготовления: {{ time_cooking }}</p>
+        <p>Шаги приготовления: {{ steps_cooking }}</p>
+        <p>Изображение: <img src="{{ media.recipes.image_dish.url }}" alt="{{ recipe.title }}" class="img-fluid rounded mb-3"></p>
+    </div>
+{% endblock %}

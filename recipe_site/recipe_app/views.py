@@ -25,7 +25,7 @@ def create_recipe(request):
     else:
         form = RecipeForm()
     recipes = Recipe.objects.all()
-    context = {'recipes': recipes, 'form': form}
+    context = {'media': recipes, 'form': form}
     return render(request, 'recipe_app/create_recipes.html', context)
 
 
@@ -41,6 +41,7 @@ def get_five_recipes(request):
                 'title': recipe.title,
                 'description': recipe.description,
                 'time_cooking': recipe.time_cooking,
+                'id_recipe': recipe.id,
             })
             added_recipe_ids.add(id_recipe)
             count += 1
@@ -61,5 +62,6 @@ def get_recipe(request, id_recipe):
         'time_cooking': recipe.time_cooking,
         'image_dish': recipe.image_dish,
     }
+    print(recipe.image_dish)
     return render(request, 'recipe_app/get_recipe.html', context)
 

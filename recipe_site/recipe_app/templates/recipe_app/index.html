@@ -5,10 +5,13 @@
 
 {% block content %}
     <div class="container">
+        <h1>Главная страница</h1>
+        <h2>Пять случайных рецептов:</h2>
         {% for el in recipes %}
             <h1>{{ el.title }}</h1>
             <p>{{ el.description }}</p>
             <p>Время приготовления: {{ el.time_cooking }}</p>
+            <a href="{% url 'recipe_app:get_recipe' el.id_recipe %}" class="btn btn-primary">Подробнее</a>
         {% endfor %}
         <form method="get" action="{% url 'users_app:authorization' %}">
         <button type="submit">Войти</button>

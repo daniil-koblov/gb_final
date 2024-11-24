@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('ingredients', models.CharField(max_length=100)),
                 ('steps_cooking', models.TextField()),
                 ('time_cooking', models.TextField()),
-                ('image_dish', models.ImageField(upload_to='recipes/')),
+                ('image_dish', models.ImageField(upload_to='media/')),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recipe_app.author')),
             ],
         ),
