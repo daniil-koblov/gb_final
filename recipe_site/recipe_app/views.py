@@ -1,40 +1,25 @@
 import random
-
 from django.shortcuts import render, redirect
-from .models import Author, Recipe, Category
-from .forms import AuthorForm, RecipeForm
+from .models import Recipe, Category
+from .forms import RecipeForm
 FRIST_ID = 1
 SIX_ID = 6
-
-def add_author(request):
-    if request.method == 'POST':
-        form = AuthorForm(request.POST)
-        if form.is_valid():
-            form_data = form.cleaned_data
-            Author.objects.create(
-                name=form_data['name'],
-                email=form_data['email']
-            )
-    else:
-        form = AuthorForm()
-    authors = Author.objects.all()
-    context = {'authors': authors, 'form': form}
-    return render(request, 'recipe_app/register_authors.html', context)
 
 
 def add_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
+            recipe = form.save()
             form_data = form.cleaned_data
             Recipe.objects.create(
                 title=form_data['title'],
                 description=form_data['description'],
                 ingredients=form_data['ingredients'],
                 steps_cooking=form_data['steps_cooking'],
-                time_cooking = form_data['time_cooking'],
+                time_cooking=form_data['time_cooking'],
                 image_dish=form_data['image'],
-                author=Author.objects.get(id=form_data['author'])
+                # author=Author.objects.get(id=form_data['author'])
             )
     else:
         form = RecipeForm()
@@ -50,10 +35,10 @@ def get_five_recipes(request, id_recipe: int):
         recipe.__str__()
         context = {
             'title': recipe.title,
-            'author': recipe.author,
+            # 'author': recipe.author,
             'description': recipe.description,
             'time_cooking': recipe.time_cooking,
         }
         count += 1
-        return render(request, 'recipe_app/get_five_recipe.html', context)
+        return render(request, 'recipe_app/index.html', context)
 

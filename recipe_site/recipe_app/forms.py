@@ -1,19 +1,5 @@
 from django import forms
-from .models import Author, Recipe, Category
-
-
-class AuthorForm(forms.Form):
-    name = forms.CharField(
-        min_length=2,
-        max_length=50,
-        label='Имя',
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите имя автора'})
-    )
-    email = forms.EmailField(
-        label='Email',
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Введите email'})
-    )
-    password = forms.CharField()
+from .models import Recipe, Category
 
 
 class RecipeForm(forms.Form):

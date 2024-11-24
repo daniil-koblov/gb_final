@@ -1,0 +1,18 @@
+{% extends 'users_app/base.html' %}
+
+{% block title %}
+    {{ title }}
+{%endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Регистрация</h1>
+        <hr>
+        <form action="" method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"> Зарегистрироваться </button>
+        </form>
+
+    </div>
+{% endblock %}
