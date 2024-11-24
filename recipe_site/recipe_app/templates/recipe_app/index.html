@@ -13,7 +13,7 @@
             <p>Время приготовления: {{ el.time_cooking }}</p>
             <a href="{% url 'recipe_app:get_recipe' el.id %}" class="btn btn-info">Подробнее</a>
         {% endfor %}
-        <a href="{% url 'recipe_app:get_full_recipes' %}" class="btn btn-success mt-3">Показать все рецепты</a>
+        <a href="{% url 'recipe_app:get_full_recipes' %}" class="btn btn-info">Показать все рецепты</a>
     </div>
         <!-- Блок для авторизованных и неавторизованных пользователей -->
         <div>
