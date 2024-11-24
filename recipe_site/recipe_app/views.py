@@ -65,3 +65,4 @@ def get_recipe(request, id_recipe):
     print(recipe.image_dish)
     return render(request, 'recipe_app/get_recipe.html', context)
 
+# For admin panel
