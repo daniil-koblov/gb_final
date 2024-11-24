@@ -13,8 +13,3 @@ class Recipe(models.Model):
     def __str__(self):
         return f"Рецепт: {self.title}."
 
-
-class Category(models.Model):
-    category_name = models.CharField(max_length=30)
-    # author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    recipe = models.ManyToManyField(Recipe)

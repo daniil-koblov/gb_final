@@ -1,0 +1,22 @@
+{% extends 'recipe_app/base.html' %}
+
+{% block title %}
+    Все рецепты
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Все рецепты</h1>
+        <div class="recipe-list">
+            {% for recipe in recipes %}
+                <div class="recipe">
+                    <h3>{{ recipe.title }}</h3>
+                    <p>{{ recipe.description }}</p>
+                    <p>Время приготовления: {{ recipe.time_cooking }}</p>
+                    <a href="{% url 'recipe_app:get_recipe' recipe.id %}" class="btn btn-primary">Подробнее</a>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'recipe_app:index' %}" class="btn btn-secondary mt-3">На главную</a>
+    </div>
+{% endblock %}

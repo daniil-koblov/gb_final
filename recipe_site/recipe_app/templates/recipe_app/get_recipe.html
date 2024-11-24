@@ -10,6 +10,27 @@
         <p>Ингредиенты: {{ ingredients }}</p>
         <p>Время приготовления: {{ time_cooking }}</p>
         <p>Шаги приготовления: {{ steps_cooking }}</p>
-        <p>Изображение: <img src="{{ media.recipes.image_dish.url }}" alt="{{ recipe.title }}" class="img-fluid rounded mb-3"></p>
+        <p>Изображение: <img src="{{ image_dish.url }}" alt="{{ recipe.title }}" class="img-fluid rounded mb-3"></p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'recipe_app:edit_recipe' id_recipe=recipe.id %}" class="btn btn-warning">Редактировать</a>
+        {% endif %}
+        <form method="get" action="{% url 'recipe_app:index' %}">
+            <button type="submit" class="btn btn-primary">Выйти на главную страницу</button>
+        </form>
+    </div>
+    <div>
+        {% if user.is_authenticated %}
+            <p>Добро пожаловать, {{ user.username }}!</p>
+            <form method="get" action="{% url 'users_app:logout' %}">
+                <button type="submit" class="btn btn-danger">Выйти из аккаунта</button>
+            </form>
+        {% else %}
+            <form method="get" action="{% url 'users_app:authorization' %}">
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+            <form method="get" action="{% url 'users_app:register' %}">
+                <button type="submit" class="btn btn-success">Регистрация</button>
+            </form>
+        {% endif %}
     </div>
 {% endblock %}

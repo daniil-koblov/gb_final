@@ -7,17 +7,18 @@
 {% block content %}
     <div class="container">
         <h1>Вход в аккаунт</h1>
-        <form action="" method='post'>
+        <form method="post" action="{% url 'users_app:authorization' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit"> Войти </button>
+            <button type="submit" class="btn btn-primary">Войти</button>
         </form>
         <form method="get" action="{% url 'users_app:register' %}">
             Еще не зарегистрированы?
-        <button type="submit"> Регистрация</button>
-            </form>
-        <form method="get" action="{% url 'users_app:logout' %}">
-            <button type="submit"> Выход</button>
+        <button type="submit" class="btn btn-primary">Регистрация</button>
+        </form>
+        <form method="get" action="{% url 'recipe_app:index' %}">
+            Передумали регистрироваться?
+            <button type="submit" class="btn btn-primary">Выйти на главную страницу</button>
             </form>
     </div>
 {% endblock %}

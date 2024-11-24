@@ -11,11 +11,11 @@
         <form action="" method='post'>
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit"> Зарегистрироваться </button>
+            <button type="submit" class="btn btn-primary">Зарегистрироваться </button>
         </form>
         <form method="get" action="{% url 'users_app:authorization' %}">
             Уже есть аккаунт?
-        <button type="submit">Войти</button>
+        <button type="submit" class="btn btn-primary">Войти</button>
             </form>
     </div>
 {% endblock %}

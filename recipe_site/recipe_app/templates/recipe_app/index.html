@@ -4,20 +4,32 @@
 {%endblock %}
 
 {% block content %}
+<a href="{% url 'recipe_app:create_recipe' %}" class="btn btn-success">Добавить рецепт</a>
+
     <div class="container">
-        <h1>Главная страница</h1>
-        <h2>Пять случайных рецептов:</h2>
         {% for el in recipes %}
             <h1>{{ el.title }}</h1>
             <p>{{ el.description }}</p>
             <p>Время приготовления: {{ el.time_cooking }}</p>
-            <a href="{% url 'recipe_app:get_recipe' el.id_recipe %}" class="btn btn-primary">Подробнее</a>
+            <a href="{% url 'recipe_app:get_recipe' el.id %}" class="btn btn-info">Подробнее</a>
         {% endfor %}
-        <form method="get" action="{% url 'users_app:authorization' %}">
-        <button type="submit">Войти</button>
-        </form>
-        <form method="get" action="{% url 'users_app:register' %}">
-            <button type="submit"> Регистрация</button>
-        </form>
+        <a href="{% url 'recipe_app:get_full_recipes' %}" class="btn btn-success mt-3">Показать все рецепты</a>
+    </div>
+        <!-- Блок для авторизованных и неавторизованных пользователей -->
+        <div>
+            {% if user.is_authenticated %}
+                <p>Добро пожаловать, {{ user.username }}!</p>
+                <form method="get" action="{% url 'users_app:logout' %}">
+                    <button type="submit" class="btn btn-danger">Выйти</button>
+                </form>
+            {% else %}
+                <form method="get" action="{% url 'users_app:authorization' %}">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </form>
+                <form method="get" action="{% url 'users_app:register' %}">
+                    <button type="submit" class="btn btn-primary">Регистрация</button>
+                </form>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
