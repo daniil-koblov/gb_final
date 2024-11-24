@@ -1,4 +1,4 @@
-#*.sqlite3
+*.sqlite3
 *.log
 *.pyc
 ### venv template
@@ -76,8 +76,8 @@ cover/
 # Django stuff:
 *.log
 local_settings.py
-#db.sqlite3
-#db.sqlite3-journal
+db.sqlite3
+db.sqlite3-journal
 
 # Flask stuff:
 instance/
