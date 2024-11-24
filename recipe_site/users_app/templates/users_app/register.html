@@ -13,6 +13,9 @@
             {{ form.as_p }}
             <button type="submit"> Зарегистрироваться </button>
         </form>
-
+        <form method="get" action="{% url 'users_app:authorization' %}">
+            Уже есть аккаунт?
+        <button type="submit">Войти</button>
+            </form>
     </div>
 {% endblock %}

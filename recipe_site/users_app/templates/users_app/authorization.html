@@ -12,5 +12,9 @@
             {{ form.as_p }}
             <button type="submit"> Войти </button>
         </form>
+        <form method="get" action="{% url 'users_app:register' %}">
+            Еще не зарегистрированы?
+        <button type="submit"> Регистрация</button>
+            </form>
     </div>
 {% endblock %}

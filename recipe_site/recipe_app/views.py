@@ -1,9 +1,9 @@
 import random
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe, Category
 from .forms import RecipeForm
 FRIST_ID = 1
-SIX_ID = 6
+SIX_ID = 3
 
 
 def add_recipe(request):
@@ -28,17 +28,19 @@ def add_recipe(request):
     return render(request, 'recipe_app/create_recipes.html', context)
 
 
-def get_five_recipes(request, id_recipe: int):
+def get_five_recipes(request):
+    recipe = ''
     for count in range(FRIST_ID, SIX_ID):
-        id_recipe = random.randint(1, 10)
+        id_recipe = random.randint(1, 3)
         recipe = get_object_or_404(Recipe, id=id_recipe)
         recipe.__str__()
-        context = {
-            'title': recipe.title,
-            # 'author': recipe.author,
-            'description': recipe.description,
-            'time_cooking': recipe.time_cooking,
-        }
         count += 1
-        return render(request, 'recipe_app/index.html', context)
+    context = {
+        'recipe': recipe,
+        'title': recipe.title,
+        # 'author': recipe.author,
+        'description': recipe.description,
+        'time_cooking': recipe.time_cooking,
+    }
+    return render(request, 'recipe_app/index.html', context)
 
